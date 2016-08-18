@@ -1,0 +1,5 @@
+Write-host "hello from write host"
+Write-output "Hello from write output"
+Write-verbose "verbose output"
+$verbosepreference = "Continue"
+Write-verbose "Output after setting verbose preference variable"
