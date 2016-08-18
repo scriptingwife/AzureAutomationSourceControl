@@ -4,7 +4,7 @@ workflow StopAllV2Vms
  	Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID `
  	-ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
 
-	$VMsv2 = Get-AzureRmVM
+	$VMsv2 = Get-AzureRmVM -ResourceGroupName 'server'
 	foreach -parallel ($vm in $vmsv2)
     	{Stop-AzureRmVM -Name $vm.name -ResourceGroupName 'server' -Force}
 }
