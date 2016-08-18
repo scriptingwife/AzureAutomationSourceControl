@@ -3,7 +3,7 @@ workflow StartAllV2Vms {
  	Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID `
  	-ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
 
-	$VMsv2 = Get-AzureRmVM
+	$VMsv2 = Get-AzureRmVM -ResourceGroupName 'server'
 	foreach -Parallel ($vm in $vmsv2)
-    	{Start-AzureRmVM -Name $vm.name -ResourceGroupName 'server'}
+    	{Start-AzureRmVM -Name $vm.name -id $vm.id}
 }
