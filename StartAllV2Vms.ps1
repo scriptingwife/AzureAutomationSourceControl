@@ -5,5 +5,5 @@ workflow StartAllV2Vms {
 
 	$VMsv2 = Get-AzureRmVM -ResourceGroupName 'server'
 	foreach -Parallel ($vm in $vmsv2)
-    	{Start-AzureRmVM -Name $vm.name -id $vm.id}
+    	{Start-AzureRmVM -Name $vm.name -ResourceGroupName 'server'}
 }
